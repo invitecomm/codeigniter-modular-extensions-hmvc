@@ -41,6 +41,11 @@ class MX_Config extends CI_Config
 
 		$_module OR $_module = CI::$APP->router->fetch_module();
 		list($path, $file) = Modules::find($file, $_module, 'config/');
+
+		if ($path === FALSE)
+		{
+			list($path, $file) = Modules::find($file, $_module, 'config/'.ENVIRONMENT.DIRECTORY_SEPARATOR);
+		}
 		
 		if ($path === FALSE)
 		{
