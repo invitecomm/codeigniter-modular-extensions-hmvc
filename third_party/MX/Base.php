@@ -1,23 +1,15 @@
 <?php (defined('BASEPATH')) OR exit('No direct script access allowed');
-
-/* load MX core classes */
-require_once dirname(__FILE__).'/Lang.php';
-require_once dirname(__FILE__).'/Config.php';
-
 /**
- * Modular Extensions - HMVC
+ * Modular Extensions Revamped - HMVC-RV
  *
- * Adapted from the CodeIgniter Core Classes
- * @link	http://codeigniter.com
+ * Revamped version of the Wiredesignz Modular Extensions - HMVC, 
+ * orignally adapted from the CodeIgniter Core Classes.
  *
- * Description:
- * This library extends the CodeIgniter CI_Controller class and creates an application 
- * object allowing use of the HMVC design pattern.
+ * This content is released under the MIT License (MIT)
  *
- * Install this file as application/third_party/MX/Base.php
- *
- * @copyright	Copyright (c) 2015 Wiredesignz
- * @version 	5.5
+ * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
+ * Copyright (c) 2015 Wiredesignz
+ * Copyright (c) 2017 INVITE Communications Co., Ltd.
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +29,11 @@ require_once dirname(__FILE__).'/Config.php';
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  **/
+ 
+/* load MX core classes */
+require_once dirname(__FILE__).'/Lang.php';
+require_once dirname(__FILE__).'/Config.php';
+
 class CI extends CI_Controller
 {
 	public static $APP;

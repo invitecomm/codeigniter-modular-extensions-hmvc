@@ -1,31 +1,15 @@
 <?php (defined('BASEPATH')) OR exit('No direct script access allowed');
-
-(defined('EXT')) OR define('EXT', '.php');
-
-global $CFG;
-
-/* get module locations from config settings or use the default module location and offset */
-is_array(Modules::$locations = $CFG->item('modules_locations')) OR Modules::$locations = array(
-	APPPATH.'modules/' => '../modules/',
-);
-
-/* PHP5 spl_autoload */
-spl_autoload_register('Modules::autoload');
-
 /**
- * Modular Extensions - HMVC
+ * Modular Extensions Revamped - HMVC-RV
  *
- * Adapted from the CodeIgniter Core Classes
- * @link	http://codeigniter.com
+ * Revamped version of the Wiredesignz Modular Extensions - HMVC, 
+ * orignally adapted from the CodeIgniter Core Classes.
  *
- * Description:
- * This library provides functions to load and instantiate controllers
- * and module controllers allowing use of modules and the HMVC design pattern.
+ * This content is released under the MIT License (MIT)
  *
- * Install this file as application/third_party/MX/Modules.php
- *
- * @copyright	Copyright (c) 2015 Wiredesignz
- * @version 	5.5
+ * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
+ * Copyright (c) 2015 Wiredesignz
+ * Copyright (c) 2017 INVITE Communications Co., Ltd.
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,6 +29,20 @@ spl_autoload_register('Modules::autoload');
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  **/
+ 
+(defined('EXT')) OR define('EXT', '.php');
+
+global $CFG;
+
+/* get module locations from config settings or use the default module location and offset */
+is_array(Modules::$locations = $CFG->item('modules_locations')) OR Modules::$locations = array(
+	APPPATH.'modules/' => '../modules/',
+);
+
+/* PHP5 spl_autoload */
+spl_autoload_register('Modules::autoload');
+
+
 class Modules
 {
 	public static $routes, $registry, $locations;

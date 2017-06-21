@@ -1,22 +1,15 @@
 <?php (defined('BASEPATH')) OR exit('No direct script access allowed');
-
-/** load the CI class for Modular Extensions **/
-require dirname(__FILE__).'/Base.php';
-
 /**
- * Modular Extensions - HMVC
+ * Modular Extensions Revamped - HMVC-RV
  *
- * Adapted from the CodeIgniter Core Classes
- * @link	http://codeigniter.com
+ * Revamped version of the Wiredesignz Modular Extensions - HMVC, 
+ * orignally adapted from the CodeIgniter Core Classes.
  *
- * Description:
- * This library replaces the CodeIgniter Controller class
- * and adds features allowing use of modules and the HMVC design pattern.
+ * This content is released under the MIT License (MIT)
  *
- * Install this file as application/third_party/MX/Controller.php
- *
- * @copyright	Copyright (c) 2015 Wiredesignz
- * @version 	5.5
+ * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
+ * Copyright (c) 2015 Wiredesignz
+ * Copyright (c) 2017 INVITE Communications Co., Ltd.
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +29,11 @@ require dirname(__FILE__).'/Base.php';
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  **/
+ 
+/** load the CI class for Modular Extensions **/
+require dirname(__FILE__).'/Base.php';
+
+
 class MX_Controller 
 {
 	public $autoload = array();
