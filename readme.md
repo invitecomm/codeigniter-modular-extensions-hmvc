@@ -1,8 +1,13 @@
-### Support development of Modular Extensions - HMVC
-[![Support development](https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif "Support Development")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FK79XNCUE9P5C)
+# Under Construction
 
+This is revamp of the Wiredesignz Modular Extensions - HMVC.  Addressing a number of short-coming of the original HMVC.  There are a few items this version is focusing on:
 
-# Modular Extensions - HMVC
+* Support for Multiple Environments in the Config Class
+* Extending Helpers
+* Extending Native Libraries
+* Improved Documentation
+
+## Modular Extensions Revamped - HMVC-RV
 
 Modular Extensions makes the CodeIgniter PHP framework modular. Modules are groups of independent components, 
 typically model, controller and view, arranged in an application modules sub-directory that can be dropped into other CodeIgniter applications.
