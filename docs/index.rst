@@ -3,52 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to SitePoint's RTDSphinx-l10n documentation!
-====================================================
+INVITE Communications Co., Ltd
+==============================
 
-phpautomodule
-=============
+Default Template
+----------------
 
-.. phpautomodule::
-   :filename: ../core/MY_Loader.php
-   :members:
-   :undoc-members:
-
-phpautoclass w/ class
-=====================
-
-.. phpautoclass:: MY_Loader
-   :filename: ../core/MY_Loader.php
-   :members:
-   :undoc-members:
-
-phpautoclass
-============
-
-.. phpautoclass:: MY_Loader
-   :filename: ../core/MY_Loader.php
-   :members:
-   :undoc-members:
-      
-phpautofunction
-===============
-
-.. phpautofunction:: MX_Loader::database
-   :filename: ../third_party/MX/Loader.php
-
-phpautofunction2
-================
-
-.. phpautofunction:: MX_Loader/database
-   :filename: ../third_party/MX/Loader.php
-   
-phpautomodule
-=============
-
-.. phpautomodule::
-   :filename: ../third_party/MX/Loader.php
-   :members:
-   :undoc-members:
 
 :hidden:`maintoc`
 ~~~~~~~~~~~~~~~~~
@@ -60,6 +20,7 @@ Contents:
 
    overview
    01-example
+   php/function
 
 
 
@@ -69,5 +30,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
 
