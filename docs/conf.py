@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# :project_name documentation build configuration file, created by
+# HMVC-RV documentation build configuration file, created by
 # sphinx-quickstart on Mon Aug 17 11:31:18 2015.
 #
 # This file is execfile()d with the current directory set to its
@@ -47,7 +47,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u':project_name'
+project = u'HMVC-RV'
 author_name = u'INVITE Communication Co., Ltd.'
 author = u'Brian LaVallee'
 inception = '2016' # Creation Year
@@ -211,7 +211,7 @@ html_static_path = ['_static']
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = ':project_namedoc'
+htmlhelp_basename = 'HMVC-RVdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -233,8 +233,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, ':project_name.tex', u':project_name Documentation',
-   u':project_name', 'manual'),
+  (master_doc, 'HMVC-RV.tex', u'HMVC-RV Documentation',
+   u'HMVC-RV', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -263,7 +263,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, ':project_name', u':project_name Documentation',
+    (master_doc, 'HMVC-RV', u'HMVC-RV Documentation',
      [author], 1)
 ]
 
@@ -277,8 +277,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, ':project_name', u':project_name Documentation',
-   author, ':project_name', 'One line description of project.',
+  (master_doc, 'HMVC-RV', u'HMVC-RV Documentation',
+   author, 'HMVC-RV', 'One line description of project.',
    'Miscellaneous'),
 ]
 
