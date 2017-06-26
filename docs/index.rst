@@ -34,8 +34,15 @@ phpautofunction
 ===============
 
 .. phpautofunction:: my_function
-   :filename: ../core/MY_Loader.php
+   :filename: ../third_party/MX/Loader.php
 
+phpautomodule
+=============
+
+.. phpautomodule::
+   :filename: ../third_party/MX/Loader.php
+   :members:
+   :undoc-members:
 
 :hidden:`maintoc`
 ~~~~~~~~~~~~~~~~~
