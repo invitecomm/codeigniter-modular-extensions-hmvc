@@ -26,3 +26,9 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+
+.. phpautomodule::
+   :filename: core/MY_Loader.php
+   :members:
+   :undoc-members:
+
