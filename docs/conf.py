@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Chaotic Umbrella'
+project = u'HMVC-RV'
 copyright = u'2017, INVITE Communications Co., Ltd.'
 author = u'INVITE Communications Co., Ltd.'
 
