@@ -28,7 +28,7 @@ Indices and tables
 
 
 phpautomodule
--------------
+^^^^^^^^^^^^^
 
 .. phpautomodule::
    :filename: ../core/MY_Loader.php
@@ -36,7 +36,7 @@ phpautomodule
    :undoc-members:
 
 phpautoclass w/ class
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 .. phpautoclass:: MY_Loader
    :filename: ../core/MY_Loader.php
@@ -44,7 +44,7 @@ phpautoclass w/ class
    :undoc-members:
 
 phpautoclass
-------------
+^^^^^^^^^^^^
 
 .. phpautoclass:: MY_Loader
    :filename: ../core/MY_Loader.php
@@ -52,7 +52,7 @@ phpautoclass
    :undoc-members:
       
 phpautofunction
----------------
+^^^^^^^^^^^^^^^
 
 .. phpautofunction:: my_function
    :filename: ../core/MY_Loader.php
