@@ -33,9 +33,15 @@ phpautoclass
 phpautofunction
 ===============
 
-.. phpautofunction:: database
+.. phpautofunction:: MX_Loader::database
    :filename: ../third_party/MX/Loader.php
 
+phpautofunction2
+================
+
+.. phpautofunction:: MX_Loader/database
+   :filename: ../third_party/MX/Loader.php
+   
 phpautomodule
 =============
 
