@@ -32,3 +32,15 @@ Indices and tables
    :members:
    :undoc-members:
 
+.. phpautomodule::
+   :filename: ../core/MY_Loader.php
+   :members:
+   :undoc-members:
+
+.. phpautofunction:: my_function
+   :filename: core/MY_Loader.php
+   
+.. phpautoclass::
+   :filename: core/MY_Loader.php
+   :members:
+   :undoc-members:
