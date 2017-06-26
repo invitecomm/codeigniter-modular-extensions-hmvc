@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Chaotic Umbrella documentation build configuration file, created by
+# :project_name documentation build configuration file, created by
 # sphinx-quickstart on Mon Aug 17 11:31:18 2015.
 #
 # This file is execfile()d with the current directory set to its
@@ -15,11 +15,12 @@
 import sys
 import os
 import shlex
+from datetime import date
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('../'))
+#sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration ------------------------------------------------
 
@@ -46,9 +47,19 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'HMVC-RV'
-copyright = u'2017, INVITE Communications Co., Ltd.'
-author = u'INVITE Communications Co., Ltd.'
+project = u':project_name'
+author_name = u'INVITE Communication Co., Ltd.'
+author = u'Brian LaVallee'
+inception = '2017' # Creation Year
+
+# Automatically Adjust Copyright from Inception Date
+this_year = date.today().year
+if date.today().year < inception:
+    copyright = '{0}, {1}'.format(inception, author_name)
+else:
+    copyright = '{0}~{1}, {2}'.format(inception, date.today().year, author_name)
+
+    
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -200,7 +211,7 @@ html_static_path = ['_static']
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Chaotic Umbrelladoc'
+htmlhelp_basename = ':project_namedoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -222,8 +233,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'Chaotic Umbrella.tex', u'Chaotic Umbrella Documentation',
-   u'Chaotic Umbrella', 'manual'),
+  (master_doc, ':project_name.tex', u':project_name Documentation',
+   u':project_name', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -252,7 +263,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'Chaotic Umbrella', u'Chaotic Umbrella Documentation',
+    (master_doc, ':project_name', u':project_name Documentation',
      [author], 1)
 ]
 
@@ -266,8 +277,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'Chaotic Umbrella', u'Chaotic Umbrella Documentation',
-   author, 'Chaotic Umbrella', 'One line description of project.',
+  (master_doc, ':project_name', u':project_name Documentation',
+   author, ':project_name', 'One line description of project.',
    'Miscellaneous'),
 ]
 

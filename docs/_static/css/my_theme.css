@@ -12,6 +12,24 @@
     margin-top: 36px;
 }
 
+.rst-content dl:not(.docutils) dt {
+	background: #F0F8F8;
+	color: #008F8F;
+	border-top: solid 3px #009999;
+}
+
+.rst-content dl:not(.docutils) dl dt {
+	margin-bottom: 6px;
+	border: none;
+	border-left: solid 3px #009999;
+	background: #F0F8F8;
+	color: #006666;
+}
+
+a {
+	color: #009999;
+}
+
 .rst-content .hidden {
     display: none !important;
 }
@@ -24,6 +42,10 @@ nav .hidden, div.section#maintoc .hidden {
 div.section#maintoc h2 {
     display: none !important;
 }
+
+
+.wy-side-nav-search {
+	background-color: #006666;
 
 .wy-table-bordered-all, .rst-content table.docutils {
     border: 1px solid #e1e4e5;
