@@ -33,7 +33,7 @@ phpautoclass
 phpautofunction
 ===============
 
-.. phpautofunction::
+.. phpautofunction:: database
    :filename: ../third_party/MX/Loader.php
 
 phpautomodule
