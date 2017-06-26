@@ -50,7 +50,7 @@ master_doc = 'index'
 project = u':project_name'
 author_name = u'INVITE Communication Co., Ltd.'
 author = u'Brian LaVallee'
-inception = '2017' # Creation Year
+inception = '2016' # Creation Year
 
 # Automatically Adjust Copyright from Inception Date
 this_year = date.today().year
