@@ -3,6 +3,7 @@
   * @author My Name
   * @author My Name <my.name@example.com>
   */
+
 class somethingNew {
   
  /**
@@ -42,4 +43,16 @@ class somethingNew {
  
  }
  
+}
+
+class anotherClass {
+
+	/**
+	  * 
+	  *
+	  * @return voice
+	  */
+	function one() {
+	}
+
 }

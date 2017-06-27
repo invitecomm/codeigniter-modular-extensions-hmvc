@@ -38,7 +38,7 @@
   */
  function count()
  {
-     <...>
+     //<...>
  }
  
  /**
@@ -48,10 +48,10 @@
   */
  function countb()
  {
-     <...>
+     //<...>
  }
  
   /**
   * @filesource
   */
-  funtion five() {}
+  function five() {}
