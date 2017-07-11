@@ -30,6 +30,8 @@ a {
 	color: #009999;
 }
 
+
+
 .rst-content .hidden {
     display: none !important;
 }
@@ -50,6 +52,7 @@ div.section#maintoc h2 {
 .wy-table-bordered-all, .rst-content table.docutils {
     border: 1px solid #e1e4e5;
 }
+
 
 .wy-table td p, .rst-content table.docutils td p, .rst-content table.field-list td p {
     line-height: unset;

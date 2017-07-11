@@ -61,7 +61,7 @@ class MY_Loader extends MX_Loader {
 		
 	// --------------------------------------------------------------------
 	
-	private function resource($path, $type, $prefix = FALSE) {
+	private function resourceXX($path, $type, $prefix = FALSE) {
 	
 		// Return the supplied path information
 		$part = pathinfo($path);
@@ -99,7 +99,7 @@ class MY_Loader extends MX_Loader {
 	 * @param	string|string[]	$helpers	Helper name(s)
 	 * @return	object
 	 */
-	public function helper($helpers = array())
+	public function helperXX($helpers = array())
 	{
 	
 		$r_path = 'helpers';
@@ -190,7 +190,7 @@ class MY_Loader extends MX_Loader {
 	 * @param	string|string[]	$helpers	Helper name(s)
 	 * @return	object
 	 */
-	public function helpers($helpers = array())
+	public function helpersXX($helpers = array())
 	{
 		return $this->helper($helpers);
 	}

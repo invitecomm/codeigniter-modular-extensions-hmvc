@@ -1,0 +1,19 @@
+==================
+core/MY_Loader.php
+==================
+
+.. warning::
+	The class reference below uses ``tk.phpautodoc`` to automatically generate the content.  It uses the ``phpDocumentor`` format.  Some ``DocBlock`` tags *may not* be supported, formatting *may not* render properly, content *may not* be missing, or content *may not* load at all.
+		
+Class Reference
+===============
+
+
+
+.. phpautomodule::
+	:filename: ../core/MY_Loader.php
+	:members:
+	:undoc-members:
+
+
+

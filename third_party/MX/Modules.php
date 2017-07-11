@@ -199,8 +199,8 @@ class Modules
 				{
 					if(is_file($fullpath.ucfirst($file_ext))) return array($fullpath, ucfirst($file));
 				}
-				else
-				/* load non-class files */
+				else {
+				// load non-class files
 				if (is_file($fullpath.$file_ext)) return array($fullpath, $file);
 			}
 		}
@@ -208,8 +208,10 @@ class Modules
 		return array(FALSE, $file);	
 	}
 	
-	/** Parse module routes **/
-	public static function parse_routes($module, $uri) 
+	/**
+	  * Parse module routes
+	  */ 
+	public static function parse_routes($module, $uri)
 	{
 		/* load the route file */
 		if ( ! isset(self::$routes[$module])) 

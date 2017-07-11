@@ -50,6 +50,7 @@ require APPPATH."third_party/MX/Router.php";
   * inheritance.  MY_Router extends MX_Router extends CI_Router
   *
   * @package	third_party/MX/Router.php
+  *
   * @subpackage MX_Router
   */
 class MY_Router extends MX_Router {
