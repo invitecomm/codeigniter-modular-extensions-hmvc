@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/hmvc-rv/badge/?version=latest)](http://hmvc-rv.readthedocs.io/?badge=latest)
+
 # Under Construction
 
 This is revamp of the Wiredesignz Modular Extensions - HMVC.  Addressing a number of short-coming of the original HMVC.  There are a few items this version is focusing on:
