@@ -7,7 +7,7 @@ Modular Extensions Revamped
 	:titlesonly:
 	:maxdepth: 1
 
-	overview
+	overview/index
 	installation/index
 	reference/index
 	php/index	
