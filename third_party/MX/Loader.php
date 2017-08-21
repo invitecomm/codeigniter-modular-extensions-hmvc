@@ -114,10 +114,15 @@ class MX_Loader extends CI_Loader
 	 * Helper Loader
 	 *
 	 * @uses MX_Loader::_mx_element_path()
+	 *
 	 * @uses MX_Loader::_mx_element_pathinfo()
+	 *
 	 * @uses MX_Loader::_mx_element_track()
+	 *
 	 * @uses MX_Loader::_mx_module_paths
+	 *
 	 * @param	string|array	$helpers	Helper name(s)
+	 *
 	 * @return	object
 	 */
 	public function helper($helpers = array())
