@@ -58,143 +58,14 @@ class MY_Loader extends MX_Loader {
 
 
 // TWIGS
-		
-	// --------------------------------------------------------------------
-	
-	private function resourceXX($path, $type, $prefix = FALSE) {
-	
-		// Return the supplied path information
-		$part = pathinfo($path);
 
-		// Affix underscore to the type, if needed.
-		$type = ($type[0] === '_') ? $type : '_' . $type;
-
-		// Lower Case
-		$part['filename'] = strtolower($part['filename']);
-
-		// Cleanup the file name
-		// url || url_helper || url_helper_helper = url_helper
-		// url.php || url_helper_helper.php.php = url_helper
-		$regex = '#(' . $type . ')*?(\.php)*?$#i';
-		$part['filename'] = preg_replace($regex,'',$part['filename']).$type;
-
-		// UCFirst
-		$part['Filename'] = ucfirst($part['filename']);
-		
-		// Affix the extension subclass prefix 
-		// url_helper -> MY_url_helper
-		if ($prefix === TRUE) {
-		 $part['extend'] = config_item('subclass_prefix').$part['filename'];
-		}
-		
-		//$data = array($part['dirname'], $part['filename']);
-
-		//return join(DIRECTORY_SEPARATOR, $data);
-		return $part;
-	}
-
-	/**
-	 * Helper Loader
-	 *
-	 * @param	string|string[]	$helpers	Helper name(s)
-	 * @return	object
-	 */
-	public function helperXX($helpers = array())
-	{
-	
-		$r_path = 'helpers';
-		is_array($helpers) OR $helpers = array($helpers);
-		foreach ($helpers as &$helper)
-		{
-		
-			$resource = $this->resource($helper, 'helper');
-			$helper = 	join(
-							DIRECTORY_SEPARATOR,
-							array(
-								//$r_path,
-								$resource['dirname'], 
-								$resource['filename']
-							)
-						);
-							
-			
-			//$helper   = $this->resource($helper, 'helper');
-
-			if (isset($this->_ci_helpers[$helper]))
-			{
-				continue;
-			}
-
-			// Is this a helper extension request?
-			//$ext_helper = $this->resource($helper, 'helper', TRUE);
-			$resource = $this->resource($helper, 'helper', TRUE);
-			$ext_helper = $resource['filename'];
-
-			$ext_loaded = FALSE;
-			foreach ($this->_ci_helper_paths as $path)
-			{
-				if (file_exists($path.'helpers/'.$ext_helper.'.php'))
-				{
-					include_once($path.'helpers/'.$ext_helper.'.php');
-					$ext_loaded = TRUE;
-				}
-			}
-
-			// If we have loaded extensions - check if the base one is here
-			if ($ext_loaded === TRUE)
-			{
-				$base_helper = BASEPATH.'helpers/'.$helper.'.php';
-				if ( ! file_exists($base_helper))
-				{
-					show_error('Unable to load the requested file: helpers/'.$helper.'.php');
-				}
-
-				include_once($base_helper);
-				$this->_ci_helpers[$helper] = TRUE;
-				log_message('info', 'Helper loaded: '.$helper);
-				continue;
-			}
-
-			// No extensions found ... try loading regular helpers and/or overrides
-			foreach ($this->_ci_helper_paths as $path)
-			{
-				if (file_exists($path.'helpers/'.$helper.'.php'))
-				{
-					include_once($path.'helpers/'.$helper.'.php');
-
-					$this->_ci_helpers[$helper] = TRUE;
-					log_message('info', 'Helper loaded: '.$helper);
-					break;
-				}
-			}
-
-			// unable to load the helper
-			if ( ! isset($this->_ci_helpers[$helper]))
-			{
-				show_error('Unable to load the requested file: helpers/'.$helper.'.php');
-			}
-		}
-
-		return $this;
-	}
 
 	// --------------------------------------------------------------------
-
-	/**
-	 * Load Helpers
-	 *
-	 * An alias for the helper() method in case the developer has
-	 * written the plural form of it.
-	 *
-	 * @uses	CI_Loader::helper()
-	 * @param	string|string[]	$helpers	Helper name(s)
-	 * @return	object
-	 */
-	public function helpersXX($helpers = array())
-	{
-		return $this->helper($helpers);
-	}
-
 	// --------------------------------------------------------------------
+	// --------------------------------------------------------------------
+	// --------------------------------------------------------------------
+	// --------------------------------------------------------------------
+		
+
 
 }
