@@ -113,13 +113,13 @@ class MX_Loader extends CI_Loader
 	/**
 	 * Helper Loader
 	 *
-	 * @uses MX_Loader::_mx_element_path()
+	 * @uses Modules::mx_element_path()
 	 *
-	 * @uses MX_Loader::_mx_element_pathinfo()
+	 * @uses Modules::mx_element_pathinfo()
 	 *
-	 * @uses MX_Loader::_mx_element_track()
+	 * @uses Modules::mx_element_track()
 	 *
-	 * @uses MX_Loader::_mx_module_paths
+	 * @uses Modules::mx_module_paths
 	 *
 	 * @param	string|array	$helpers	Helper name(s)
 	 *
@@ -133,10 +133,10 @@ class MX_Loader extends CI_Loader
 		{
 		
 		    // Path Information
-		    $elements = $this->_mx_element_pathinfo($helper, 'helper');
+		    $elements = Modules::mx_element_pathinfo($helper, 'helper');
             
             // Tracking Name
-            $helper = $this->_mx_element_track($elements);
+            $helper = Modules::mx_element_track($elements);
             
             // Skip is already loaded
 			if (isset($this->_ci_helpers[$helper]))
@@ -145,10 +145,10 @@ class MX_Loader extends CI_Loader
 			}
 
             // Load Helper Extensions
-			foreach (array_reverse($this->_mx_module_paths()) as $path) {
+			foreach (array_reverse(Modules::mx_module_paths()) as $path) {
 
                 // Full Path to File
-			    $file = $this->_mx_element_path($path,'helpers',$elements,TRUE);
+			    $file = Modules::mx_element_path($path,'helpers',$elements,TRUE);
 			    
 				if (realpath($file)) {
                     include_once(realpath($file));
@@ -157,10 +157,10 @@ class MX_Loader extends CI_Loader
 			}
 
 			// Load Regular Helpers and/or Overrides
-			foreach ($this->_mx_module_paths() as $path) {
+			foreach (Modules::mx_module_paths() as $path) {
 
                 // Full Path to File
-                $file = $this->_mx_element_path($path,'helpers',$elements);
+                $file = Modules::mx_element_path($path,'helpers',$elements);
 
                 if (realpath($file)) {
                     include_once(realpath($file));
@@ -371,153 +371,7 @@ class MX_Loader extends CI_Loader
 	}
 
 
-    // --------------------------------------------------------------------
 
-	/**
-	 * Format the full element path.
-	 *
-	 * @see _mx_element_pathinfo() for information on the $elements array.
-	 * @todo Include ability for ucfirst to support library calsses.
-	 *
-	 * @param	string  $path The absolute path.
-	 * @param	string  $subdir Subdirectory containing the elements.
-	 * @param	array  $elements The element path info.
-	 * @param	bool  $subclass Use filename with the subclass_prefix
-	 * @return	string filename OR path/to/filename
-	 */		
-	private function _mx_element_path($path, $subdir, $elements, $subclass=FALSE) {
-	
-	    if ($subclass) {
-	        $filename = $elements['subclass'] . '.' . $elements['extension'];
-	    } else {
-	        $filename = $elements['filename'] . '.' . $elements['extension'];
-	    }
-	
-        $data =   join(
-                        DIRECTORY_SEPARATOR,
-                        array(
-                            $path,
-                            $subdir,
-                            $elements['dirname'],
-                            $filename
-                        )
-                    );
-        return $data;
-
-	}
-
-	// --------------------------------------------------------------------
-	/**
-	 * Cleanup the element to be loaded.
-	 *
-     * A multi-use function to process and cleanup the element path provided to 
-     * the loader class.  Providing an associative array of information about 
-     * the file to be loaded, and provides additional information to meet CI 
-     * naming requirements.
-	 *
-	 * @param	string  $path The element passed to the loader class.
-	 * @param	string  $type The element type, such as 'helper' or '_helper'.
-	 * @return	array  
-	 */	
-	private function _mx_element_pathinfo($path, $type=NULL) {
-	
-		// Return the supplied path information
-		$data = pathinfo($path);
-		
-		// Set the file extension.  Normally not passed to the loader.
-		$data['extension'] = 'php';
-
-		// Affix underscore to the type, if needed.
-		if ($type) {
-            $type = ($type[0] === '_') ? $type : '_' . $type;
-        }
-        
-		// Lower Case
-		$data['filename'] = strtolower($data['filename']);
-
-		// Cleanup the file name
-		// url || url_helper || url_helper_helper = url_helper
-		// url.php || url_helper_helper.php.php = url_helper
-		$regex = '#(' . $type . ')*?(\.php)*?$#i';
-		$data['filename'] = preg_replace($regex,'',$data['filename']).$type;
-
-		// UCFirst
-		$data['ucf'] = ucfirst($data['filename']);
-		
-		// Affix the extension subclass prefix 
-		// url_helper -> MY_url_helper
-		 $data['subclass'] = config_item('subclass_prefix').$data['filename'];
-		
-		return $data;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Format the element to track it's loaded status.
-	 *
-	 * @see _mx_element_pathinfo() for information on the $elements array.
-	 *
-	 * @param	array  $elements The element path info.
-	 * @return	string filename OR path/to/filename
-	 */	
-	private function _mx_element_track($elements) {
-	
-	    if ($elements['dirname'] === '.') {
-            $data = $elements['filename'];
-	    } else {
-            $data =   join(
-                            DIRECTORY_SEPARATOR,
-                            array(
-                                $elements['dirname'],
-                                $elements['filename']
-                            )
-                        );
-        }
-
-        return $data;
-
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * List of paths to load resources from.
-	 *
-	 * Creates a list of paths, starting with the module paths.  It's 
-	 * used to replace: $_ci_library_paths $_ci_helper_paths $_ci_model_paths
-	 *
-	 * @todo Add parameter to change the order of operation.  
-	 *
-	 * @param	bool  $basepath Include the CI BASEPATH in returned array.
-	 * @return	array
-	 */	
-	protected function _mx_module_paths($basepath=TRUE) {
-
-        // Module Paths
-        foreach (Modules::$locations AS $path => $module) {
-            $data[] =   join(
-                            DIRECTORY_SEPARATOR,
-                            array(
-                                $path, 
-                                CI::$APP->router->fetch_module()
-                            )
-                        );
-        }
-        
-        // Application Path
-        $data[] = APPPATH;
-        
-        // Base Path
-        if ($basepath) {
-            $data[] = BASEPATH;
-        }
-	    
-	    return $data;
-	
-	}
-
-	// --------------------------------------------------------------------
 
 
 	protected function &_ci_get_component($component)
