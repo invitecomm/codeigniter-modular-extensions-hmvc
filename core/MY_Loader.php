@@ -41,7 +41,7 @@ require APPPATH."third_party/MX/Loader.php";
 // ----------------------------------------------------------------------
 
 /**
-  * Extend the Loader Core Class
+  * Extend, Override, Replace the Loader Core Class
   * 
   * When adding functionality to an existing library, the normal method is to 
   * extend the parent class in CodeIgniter.  MY_Loader extends CI_Loader
@@ -50,55 +50,14 @@ require APPPATH."third_party/MX/Loader.php";
   * inheritance.  MY_Loader extends MX_Loader extends CI_Loader
   *
   * @package	third_party/MX/Loader.php
+  *
   * @subpackage MX_Loader
   */
 class MY_Loader extends MX_Loader {
 	// Method overriding is handled by MX_Loader
 	// Methods added here will overide both MX_Loader and CI_Loader
-
-
-// TWIGS
-
-	public function __construct()
-	{
-	    parent::__construct();
-	}
-
 	// --------------------------------------------------------------------
 
-
-
 	// --------------------------------------------------------------------
-
-	/**
-	 * Config Loader
-	 *
-	 * Loads a config file (an alias for CI_Config::load()).
-	 *
-	 * @uses	CI_Config::load()
-	 * @param	string	$file			Configuration file name
-	 * @param	bool	$use_sections		Whether configuration values should be loaded into their own section
-	 * @param	bool	$fail_gracefully	Whether to just return FALSE or display an error message
-	 * @return	bool	TRUE if the file was loaded correctly or FALSE on failure
-	 */
-	public function config($file, $use_sections = FALSE, $fail_gracefully = FALSE)
-	{
-		//return get_instance()->config->load($file, $use_sections, $fail_gracefully);
-
-		return CI::$APP->config->load($file, $use_sections, $fail_gracefully, $this->_module);
-
-
-	}
-
-	// --------------------------------------------------------------------
-
-
-	// --------------------------------------------------------------------
-	// --------------------------------------------------------------------
-	// --------------------------------------------------------------------
-	// --------------------------------------------------------------------
-	// --------------------------------------------------------------------
-		
-
 
 }

@@ -41,7 +41,7 @@ require APPPATH."third_party/MX/Router.php";
 // ----------------------------------------------------------------------
 
 /**
-  * Extend the Router Core Class
+  * Extend, Override, Replace the Router Core Class
   * 
   * When adding functionality to an existing library, the normal method is to 
   * extend the parent class in CodeIgniter.  MY_Router extends CI_Router
@@ -56,4 +56,8 @@ require APPPATH."third_party/MX/Router.php";
 class MY_Router extends MX_Router {
 	// Method overriding is handled by MX_Router
 	// Methods added here will overide both MX_Router and CI_Router
+	// --------------------------------------------------------------------
+
+	// --------------------------------------------------------------------
+
 }

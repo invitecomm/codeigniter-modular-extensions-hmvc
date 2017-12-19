@@ -32,44 +32,89 @@
  
 class MX_Config extends CI_Config 
 {	
-	public function load($file = '', $use_sections = FALSE, $fail_gracefully = FALSE, $_module = '') 
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Load Config File
+	 *
+	 * @param	string	$file			Configuration file name
+	 * @param	bool	$use_sections		Whether configuration values should be loaded into their own section
+	 * @param	bool	$fail_gracefully	Whether to just return FALSE or display an error message
+	 * @return	bool	TRUE if the file was loaded correctly or FALSE on failure
+	 */
+	public function load($file = 'config', $use_sections = FALSE, $fail_gracefully = FALSE)
 	{
-		if (in_array($file, $this->is_loaded, TRUE)) return $this->item($file);
 
-		$_module OR $_module = CI::$APP->router->fetch_module();
-		list($path, $file) = Modules::find($file, $_module, 'config/');
-		
-		if ($path === FALSE)
-		{
-			parent::load($file, $use_sections, $fail_gracefully);					
-			return $this->item($file);
-		}  
-		
-		if ($config = Modules::load_file($file, $path, 'config'))
-		{
-			/* reference to the config array */
-			$current_config =& $this->config;
+        // Path Information
+        $elements = Modules::mx_element_pathinfo($file);
+        
+        // Tracking Name
+        $tracking = Modules::mx_element_track($elements);        
+        
+		//$file = ($file === '') ? 'config' : str_replace('.php', '', $file);
+		$loaded = FALSE;
 
-			if ($use_sections === TRUE)	
+
+		foreach (array_reverse(Modules::mx_module_paths(FALSE)) as $path)
+		{
+			foreach (array('config', 'config'.DIRECTORY_SEPARATOR.ENVIRONMENT) as $location)
 			{
-				if (isset($current_config[$file])) 
+			
+			$file_path = Modules::mx_element_path($path,$location,$elements);
+
+				if (in_array($file_path, $this->is_loaded, TRUE))
 				{
-					$current_config[$file] = array_merge($current_config[$file], $config);
-				} 
-				else 
-				{
-					$current_config[$file] = $config;
+					return TRUE;
 				}
-				
-			} 
-			else 
-			{
-				$current_config = array_merge($current_config, $config);
-			}
 
-			$this->is_loaded[] = $file;
-			unset($config);
-			return $this->item($file);
+				if ( ! realpath($file_path))
+				{
+					continue;
+				}
+
+				include(realpath($file_path));
+
+				if ( ! isset($config) OR ! is_array($config))
+				{
+					if ($fail_gracefully === TRUE)
+					{
+						return FALSE;
+					}
+
+					show_error('Your '.realpath($file_path).' file does not appear to contain a valid configuration array.');
+				}
+
+				if ($use_sections === TRUE)
+				{
+					$this->config[$file] = isset($this->config[$file])
+						? array_merge($this->config[$file], $config)
+						: $config;
+				}
+				else
+				{
+					$this->config = array_merge($this->config, $config);
+				}
+
+				$this->is_loaded[] = realpath($file_path);
+				$config = NULL;
+				$loaded = TRUE;
+				log_message('debug', 'Config file loaded: '.realpath($file_path));
+			}
 		}
+
+		if ($loaded === TRUE)
+		{
+			return TRUE;
+		}
+		elseif ($fail_gracefully === TRUE)
+		{
+			return FALSE;
+		}
+
+		show_error('The configuration file '.$file.'.php does not exist.');
 	}
+
+	// --------------------------------------------------------------------
+
 }

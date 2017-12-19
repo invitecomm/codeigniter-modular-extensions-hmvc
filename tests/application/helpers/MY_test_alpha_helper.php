@@ -38,3 +38,49 @@ if ( ! function_exists('alpha_zulu'))
 	function alpha_two() {
 	    return 'application';
 	}
+
+
+    function asset($path) {
+        //return pathinfo($path);
+        
+        $asset = 'assets'. DIRECTORY_SEPARATOR . $path;
+        $asset_path = preg_replace('#/+#','/',$asset);
+        foreach (Modules::mx_module_paths() AS $module) {
+        
+            $myPath = $module . DIRECTORY_SEPARATOR . $asset_path;
+            
+            if (realpath($myPath)) {
+
+                //$str = preg_replace(FCPATH, '', realpath($module));
+                return base_url() . clean_path($myPath);
+            /*} else {*/
+                //$myPath = FCPATH . DIRECTORY_SEPARATOR . $asset_path;
+                //return realpath($myPath);
+            
+                
+            }
+
+        }
+        
+        return base_url() . $asset_path;
+        
+        //return debug_backtrace();
+        //return CI::$APP->router->fetch_module();
+        
+        //return base_url();
+        
+        
+        //$clean = preg_replace('#/+#','/',$path);
+        //return $clean;
+        
+        
+    }
+    
+    function clean_path($path) {
+    
+        $front_controller = explode('/', realpath(FCPATH));
+        $compate_path = explode('/', realpath($path));
+        
+        return implode('/', array_diff_key($compate_path, $front_controller));
+    
+    }

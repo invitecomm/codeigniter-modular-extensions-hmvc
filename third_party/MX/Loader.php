@@ -66,7 +66,10 @@ class MX_Loader extends CI_Loader
 		}
 
 		/* add this module path to the loader variables */
-		$this->_add_module_paths($this->_module);
+		//$this->_add_module_paths($this->_module);
+		// DISABLED
+		// Is not working correctly with new code.
+		// Come back and check how to fix.
 	}
 
 	/** Add a module path loader variables **/
@@ -85,10 +88,10 @@ class MX_Loader extends CI_Loader
 	}
 
 	/** Load a module config file **/
-	public function config($file, $use_sections = FALSE, $fail_gracefully = FALSE)
+/*	public function config($file, $use_sections = FALSE, $fail_gracefully = FALSE)
 	{
 		return CI::$APP->config->load($file, $use_sections, $fail_gracefully, $this->_module);
-	}
+	}*/
 
 	/** Load the database drivers **/
 	public function database($params = '', $return = FALSE, $query_builder = NULL)
@@ -147,8 +150,8 @@ class MX_Loader extends CI_Loader
             // Load Helper Extensions
 			foreach (array_reverse(Modules::mx_module_paths()) as $path) {
 
-                // Full Path to File
-			    $file = Modules::mx_element_path($path,'helpers',$elements,TRUE);
+               // Full Path to File
+			   $file = Modules::mx_element_path($path,'helpers',$elements,TRUE);
 			    
 				if (realpath($file)) {
                     include_once(realpath($file));
@@ -200,6 +203,8 @@ class MX_Loader extends CI_Loader
 
 	// --------------------------------------------------------------------
 	/** Load a module language file **/
+
+/*
 	public function language($langfile, $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '')
 	{
 		CI::$APP->lang->load($langfile, $idiom, $return, $add_suffix, $alt_path, $this->_module);
@@ -211,8 +216,10 @@ class MX_Loader extends CI_Loader
 		foreach($languages as $_language) $this->language($_language);
 		return $this;
 	}
-
+*/
 	/** Load a module library **/
+
+
 	public function library($library, $params = NULL, $object_name = NULL)
 	{
 		if (is_array($library)) return $this->libraries($library);
